@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title%>
+    </title>
+    <link rel="stylesheet" href="/css/list.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="main-heading">TODO App</h1>
+    </header>
+
+    <main>
+        <form action="/users/create" method="POST" class="form">
+            <textarea name="description" id="desc" cols="30" rows="2" placeholder="What do you need to do?"></textarea>
+            <select name="catagory" id="catagory">
+                <option value="COLLEGE">COLLEGE</option>
+                <option value="OFFICE">OFFICE</option>
+                <option value="FREELANCE">FREELANCE</option>
+                <option value="HOME">HOME</option>
+            </select>
+            <input type="date" name="date" placeholder="Date" id="date">
+            <input type="submit" value="+ ADD TASK" id="submit-btn">
+        </form>
+
+        <ol class="list-of-todo">
+            <% todo_list.forEach(function(e , i){%>
+                <li class="list-items">
+                    <!-- <input type="checkbox" id="check" name="check" value="false"> -->
+
+                    <div class="description">
+                        <%= e.description %>
+                    </div>
+
+                    <div class="date">
+                        <%= e.date %>
+                    </div>
+
+                    <div class="catagory">
+                        <%= e.catagory %>
+                    </div>
+
+                    <a href="/users/delete-contact/<%= e.id %>" class="links">X</a>
+                        <!-- <a href="/delete-contact/?number=<%= i.number %> " class="links">X</a> -->
+                </li>
+                <%})%>
+        </ol>
+
+    </main>
+</body>
+
+</html>
